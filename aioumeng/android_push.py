@@ -224,7 +224,6 @@ class AndroidPush:
         sign = self._get_sign(method, self.GATEWAY, body,
                               self.android_push_config.secret)
 
-        # print(sign)
         result = await self._do_request(method, self.GATEWAY, body,
                                         {'sign': sign})
         return result

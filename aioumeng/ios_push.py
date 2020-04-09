@@ -112,13 +112,11 @@ class IOSPush:
 
         body = json.dumps(post_body, ensure_ascii=False, separators=(',', ':'),
                           sort_keys=True)
-        print(body)
 
         method = 'POST'
         sign = self._get_sign(method, self.GATEWAY, body,
                               self.ios_push_config.secret)
 
-        # print(sign)
         result = await self._do_request(method, self.GATEWAY, body,
                                         {'sign': sign})
         return result
