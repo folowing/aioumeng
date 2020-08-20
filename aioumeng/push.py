@@ -39,13 +39,6 @@ class AioUMengPush(AndroidPush, IOSPush):
             skip_auto_headers={'Content-Type'},
         )
 
-    def __del__(self):
-        if not self._session.closed:
-            if self._session._connector is not None \
-                    and self._session._connector_owner:
-                self._session._connector.close()
-            self._session._connector = None
-
     GATEWAY = 'https://msgapi.umeng.com/api/send'
 
     async def _do_request(self, method, url, body, params=None,
